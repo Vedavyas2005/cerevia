@@ -1008,6 +1008,10 @@
   <script>
     const API = 'https://ved2005-alzheimers-mri-backend.hf.space/predict';
 
+    // Wakeup call for backend if its sleeping
+    fetch('https://ved2005-alzheimers-mri-backend.hf.space/health')
+      .catch(() => {});
+
     let selectedFile = null;
 
     const fileInput   = document.getElementById('fileInput');
