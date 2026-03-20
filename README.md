@@ -230,7 +230,7 @@ L_mixed = λ·L(yᵢ) + (1-λ)·L(yⱼ)
 
 - GPU: NVIDIA RTX 4050 (6GB VRAM)
 - Batch size: 64
-- Training time per model: ~25–35 minutes
+- Training time per model: ~2–3 hours
 
 ---
 
