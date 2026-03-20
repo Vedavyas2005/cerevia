@@ -1,0 +1,13 @@
+{
+  "accuracy": 0.9976096846325854,
+  "f1_macro": 0.9971084518392962,
+  "f1_weighted": 0.9976125096704799,
+  "roc_auc_macro": 0.9999802303551423,
+  "per_class_f1": {
+    "Non Demented": 0.9984614621073006,
+    "Very mild Dementia": 0.9939511250907331,
+    "Mild Dementia": 0.9960212201591512,
+    "Moderate Dementia": 1.0
+  },
+  "classification_report": "                    precision    recall  f1-score   support\n\n      Non Demented       1.00      1.00      1.00     10084\nVery mild Dementia       0.99      1.00      0.99      2060\n     Mild Dementia       0.99      1.00      1.00       751\n Moderate Dementia       1.00      1.00      1.00        74\n\n          accuracy                           1.00     12969\n         macro avg       1.00      1.00      1.00     12969\n      weighted avg       1.00      1.00      1.00     12969\n"
+}

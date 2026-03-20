@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alzheimer's MRI Classifier</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">🧠 AlzNet</div>
+      <p class="tagline">Alzheimer's Stage Detection from Brain MRI</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Upload card -->
+    <section class="card upload-card" id="uploadCard">
+      <h2>Upload MRI Scan</h2>
+      <p class="hint">Supported: JPG, PNG · Axial brain MRI slice</p>
+
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="image/*" hidden />
+        <div class="drop-icon">📂</div>
+        <p>Drag &amp; drop an image here<br/>or <span class="link" onclick="document.getElementById('fileInput').click()">browse files</span></p>
+      </div>
+
+      <div class="preview-wrap" id="previewWrap" style="display:none;">
+        <img id="preview" alt="MRI preview" />
+        <button class="btn-clear" onclick="clearAll()">✕ Clear</button>
+      </div>
+
+      <button class="btn-primary" id="analyseBtn" onclick="analyse()" disabled>
+        Analyse
+      </button>
+    </section>
+
+    <!-- Results card (hidden until prediction) -->
+    <section class="card results-card" id="resultsCard" style="display:none;">
+
+      <div class="result-top">
+        <div class="result-label">
+          <span class="result-tag" id="resultTag">—</span>
+          <p class="result-conf" id="resultConf"></p>
+        </div>
+        <div class="disclaimer">
+          ⚠️ For research purposes only. Not a medical device.
+        </div>
+      </div>
+
+      <!-- Probability bars -->
+      <div class="prob-section">
+        <h3>Class Probabilities</h3>
+        <div id="probBars"></div>
+      </div>
+
+      <!-- Grad-CAM -->
+      <div class="gradcam-section">
+        <h3>Grad-CAM Heatmap</h3>
+        <p class="hint">Highlighted regions influenced the prediction most.</p>
+        <div class="gradcam-images">
+          <div>
+            <p class="img-label">Original</p>
+            <img id="originalImg" alt="original" />
+          </div>
+          <div>
+            <p class="img-label">Activation Map</p>
+            <img id="gradcamImg" alt="gradcam" />
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display:none;">
+      <div class="spinner"></div>
+      <p>Analysing MRI ...</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Built with PyTorch · FastAPI · Grad-CAM &nbsp;|&nbsp; OASIS Dataset</p>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

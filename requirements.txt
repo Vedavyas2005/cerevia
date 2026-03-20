@@ -1,0 +1,15 @@
+# requirements for HuggingFace Spaces deployment
+# NOTE: torch is installed separately in Dockerfile (CPU build)
+# DO NOT add torch/torchvision here
+
+numpy>=1.26.4
+Pillow>=10.0.0
+opencv-python-headless>=4.9.0    # headless = no GUI deps, smaller image
+scikit-learn>=1.4.0
+matplotlib>=3.8.0
+
+# Web framework
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
+jinja2>=3.1.0

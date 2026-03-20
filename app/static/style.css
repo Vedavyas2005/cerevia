@@ -1,0 +1,192 @@
+/* style.css */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #0d1117;
+  --surface:  #161b22;
+  --border:   #30363d;
+  --primary:  #58a6ff;
+  --success:  #3fb950;
+  --warning:  #d29922;
+  --danger:   #f85149;
+  --text:     #e6edf3;
+  --muted:    #8b949e;
+  --radius:   12px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 2rem;
+}
+.header-inner { max-width: 900px; margin: 0 auto; }
+.logo   { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+.tagline { color: var(--muted); font-size: 0.875rem; margin-top: 0.2rem; }
+
+/* ── Main ── */
+main {
+  flex: 1;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  position: relative;
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+.card h2 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+.card h3 { font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--muted); }
+.hint { color: var(--muted); font-size: 0.8rem; margin-bottom: 1rem; }
+
+/* ── Drop zone ── */
+.drop-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.drop-zone.dragover { border-color: var(--primary); }
+.drop-zone .drop-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.drop-zone p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+.link { color: var(--primary); cursor: pointer; text-decoration: underline; }
+
+/* ── Preview ── */
+.preview-wrap {
+  position: relative;
+  display: inline-block;
+  margin: 1rem 0;
+}
+.preview-wrap img {
+  max-height: 220px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: block;
+}
+.btn-clear {
+  position: absolute;
+  top: -8px; right: -8px;
+  background: var(--danger);
+  border: none; border-radius: 50%;
+  color: #fff; cursor: pointer;
+  width: 24px; height: 24px;
+  font-size: 0.75rem; line-height: 1;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  background: var(--primary);
+  color: #0d1117;
+  border: none; border-radius: 8px;
+  padding: 0.65rem 1.75rem;
+  font-size: 0.95rem; font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: opacity 0.2s;
+  display: block;
+}
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-primary:not(:disabled):hover { opacity: 0.85; }
+
+/* ── Result top ── */
+.result-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.result-tag {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--success);
+  border: 2px solid var(--success);
+  border-radius: 8px;
+  padding: 0.3rem 0.9rem;
+}
+.result-conf { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; }
+.disclaimer {
+  font-size: 0.78rem; color: var(--warning);
+  background: rgba(210,153,34,0.1);
+  border: 1px solid rgba(210,153,34,0.3);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  max-width: 300px;
+}
+
+/* ── Probability bars ── */
+.prob-section { margin-bottom: 1.75rem; }
+.prob-row { margin-bottom: 0.6rem; }
+.prob-label {
+  display: flex; justify-content: space-between;
+  font-size: 0.82rem; color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+.prob-bar-bg {
+  background: var(--border);
+  border-radius: 4px; height: 8px; overflow: hidden;
+}
+.prob-bar-fill {
+  height: 100%; border-radius: 4px;
+  background: var(--primary);
+  transition: width 0.6s ease;
+}
+.prob-bar-fill.top { background: var(--success); }
+
+/* ── Grad-CAM ── */
+.gradcam-section {}
+.gradcam-images {
+  display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem;
+}
+.gradcam-images div { flex: 1; min-width: 140px; }
+.img-label { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; }
+.gradcam-images img {
+  width: 100%; border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* ── Loading overlay ── */
+.loading-overlay {
+  position: fixed; inset: 0;
+  background: rgba(13,17,23,0.7);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1rem; z-index: 100;
+}
+.spinner {
+  width: 44px; height: 44px;
+  border: 4px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 1.25rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+}
